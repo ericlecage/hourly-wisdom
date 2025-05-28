@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hourly Wisdom</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #fffaf2;
+      color: #2c2c2c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+    .quote {
+      font-size: 1.5em;
+      margin: 20px 0;
+    }
+    .theme {
+      font-style: italic;
+      color: #6b4e2e;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hourly Wisdom</h1>
+  <div class="quote" id="quote"></div>
+  <div class="theme" id="theme"></div>
+
+  <script>
+    const quotes = [
+      { theme: "Awakening", text: "Darkness whispers truth before dawn dares to speak." },
+      { theme: "Solitude", text: "In the silence between stars, the soul remembers its origin." },
+      { theme: "Intuition", text: "Night’s stillness reveals what noise cannot—your inner compass." },
+      { theme: "Resilience", text: "Every shadow cast by despair is proof of light’s return." },
+      { theme: "Renewal", text: "Each sunrise is a second chance cloaked in golden light." },
+      { theme: "Purpose", text: "The day awaits those who walk with meaning, not haste." },
+      { theme: "Growth", text: "To rise is not to rush, but to root deeper with each breath." },
+      { theme: "Education", text: "True learning begins when curiosity dares to challenge comfort." },
+      { theme: "Business", text: "Profit without purpose is a house without doors." },
+      { theme: "Innovation", text: "Creativity is rebellion with elegance and vision." },
+      { theme: "Courage", text: "Bravery is fear that decided to stand its ground." },
+      { theme: "Balance", text: "Even the sun pauses at zenith to find its center." },
+      { theme: "Truth", text: "Truth is not loud—it lingers like wind through trees." },
+      { theme: "Connection", text: "People are not puzzles to solve but universes to explore." },
+      { theme: "Compassion", text: "Kindness is the quiet revolution that never needs applause." },
+      { theme: "Politics", text: "Power without conscience is a storm without direction." },
+      { theme: "Justice", text: "Justice is the melody when the scales remember harmony." },
+      { theme: "Love", text: "Love is the language even silence understands." },
+      { theme: "Spirituality", text: "Faith is the echo of stars in the soul’s cathedral." },
+      { theme: "Self-Awareness", text: "To know thyself is to greet your own shadow with grace." },
+      { theme: "Forgiveness", text: "To forgive is to loosen time’s grip on your pain." },
+      { theme: "Reflection", text: "Every night holds a mirror; the wise dare to look." },
+      { theme: "Peace", text: "Peace is not absence—it’s presence without weight." },
+      { theme: "Eternity", text: "Midnight opens the door between endings and infinities." }
+    ];
+
+    const now = new Date();
+    const hour = now.getHours();
+    const quote = quotes[hour];
+    document.getElementById('quote').textContent = `"${quote.text}"`;
+    document.getElementById('theme').textContent = `— ${quote.theme}`;
+  </script>
+</body>
+</html>
