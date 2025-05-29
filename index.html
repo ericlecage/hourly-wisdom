@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>el’s Hourly Wisdom – Live Daily Quotes</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #fffaf2;
+      color: #2c2c2c;
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    .intro {
+      text-align: center;
+      font-size: 1.1em;
+      margin: 20px auto;
+      max-width: 750px;
+    }
+    .quote-block {
+      margin: 15px 0;
+      padding: 15px;
+      border-left: 5px solid #d4a373;
+      background-color: #fcf8f3;
+      border-radius: 5px;
+    }
+    .theme {
+      font-style: italic;
+      color: #6b4e2e;
+    }
+    .hour {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>el’s Hourly Wisdom – May 29, 2025</h1>
+
+  <div class="intro">
+    From the sanctuary of <em>Eternal Echo</em> — a voice that never fades,<br>
+    here breathes a rhythm of truth, love, and light.<br>
+    Each hour, a whisper from the cosmos,<br>
+    each quote, a timeless note in the song of your day.<br>
+    Let the echo guide you inward, onward, and beyond.
+  </div>
+
+  <div id="quotes"></div>
+
+  <script>
+    const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTjOTGpIhzbGSFsNoUgPGYDtO1cNSsCfw4s49vnQRhXY-WU39Za1o3eQmsr9eG0UeHlMiYBsj3-2Xe7/pub?output=csv";
+
+    fetch(sheetUrl)
+      .then(response => response.text())
+      .then(csv => {
+        const lines = csv.split("\n").slice(1); // skip header
+        const quotesContainer = document.getElementById("quotes");
+
+        lines.forEach(line => {
+          const [date, hour, theme, ...quoteParts] = line.split(",");
+          if (date && date.trim() === "2025-05-29") {
+            const rawQuote = quoteParts.join(",").trim();
+            const cleanedQuote = rawQuote.replace(/^"+|"+$/g, "").replace(/""/g, '"');
+
+            const div = document.createElement("div");
+            div.className = "quote-block";
+            div.innerHTML = `<div class="hour">${hour} – <span class="theme">${theme}</span></div>"${cleanedQuote}"`;
+            quotesContainer.appendChild(div);
+          }
+        });
+      })
+      .catch(err => {
+        document.getElementById("quotes").innerHTML = "Failed to load quotes. Please try again later.";
+        console.error(err);
+      });
+  </script>
+</body>
+</html>

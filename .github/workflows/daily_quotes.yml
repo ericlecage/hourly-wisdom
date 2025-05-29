@@ -1,0 +1,33 @@
+name: Daily Quote Generator
+
+on:
+  schedule:
+    - cron: '1 0 * * *'  # Every day at 00:01 UTC
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install Dependencies
+      run: pip install --upgrade pip
+
+    - name: Generate Daily Quotes
+      run: python generate_quotes.py
+
+    - name: Commit and Push
+      run: |
+        git config --global user.name "El's Wisdom Bot"
+        git config --global user.email "bot@hourlywisdom.com"
+        git add data/
+        git commit -m "Auto-generated quotes for today"
+        git push
