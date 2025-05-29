@@ -2,23 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hourly Wisdom</title>
+  <title>el’s Hourly Wisdom</title>
   <style>
     body {
       font-family: 'Georgia', serif;
       background-color: #fffaf2;
       color: #2c2c2c;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
+      padding: 30px;
+      line-height: 1.6;
       text-align: center;
     }
-    .quote {
-      font-size: 1.5em;
-      margin: 20px 0;
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    select {
+      padding: 8px;
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+    .quote-block {
+      margin: 20px auto;
+      max-width: 600px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fefdf9;
     }
     .theme {
       font-style: italic;
@@ -27,9 +36,14 @@
   </style>
 </head>
 <body>
-  <h1>Hourly Wisdom</h1>
-  <div class="quote" id="quote"></div>
-  <div class="theme" id="theme"></div>
+  <h1>el’s Hourly Wisdom</h1>
+  <p>Select an hour to reveal its wisdom:</p>
+  <select id="hourSelect" onchange="showQuote()"></select>
+
+  <div id="selectedQuote" class="quote-block"></div>
+
+  <h2>All 24 Quotes</h2>
+  <div id="allQuotes"></div>
 
   <script>
     const quotes = [
@@ -59,11 +73,34 @@
       { theme: "Eternity", text: "Midnight opens the door between endings and infinities." }
     ];
 
-    const now = new Date();
-    const hour = now.getHours();
-    const quote = quotes[hour];
-    document.getElementById('quote').textContent = `"${quote.text}"`;
-    document.getElementById('theme').textContent = `— ${quote.theme}`;
+    const hourSelect = document.getElementById('hourSelect');
+    const selectedQuote = document.getElementById('selectedQuote');
+    const allQuotesDiv = document.getElementById('allQuotes');
+
+    function showQuote() {
+      const hour = parseInt(hourSelect.value);
+      const q = quotes[hour];
+      selectedQuote.innerHTML = `<div><strong>${String(hour + 1).padStart(2, '0')}:00 – ${q.theme}</strong><br>"${q.text}"</div>`;
+    }
+
+    function renderQuotes() {
+      quotes.forEach((q, i) => {
+        const hourText = String(i + 1).padStart(2, '0') + ":00";
+        const div = document.createElement('div');
+        div.className = 'quote-block';
+        div.innerHTML = `<strong>${hourText} – ${q.theme}</strong><br>"${q.text}"`;
+        allQuotesDiv.appendChild(div);
+
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = hourText;
+        hourSelect.appendChild(opt);
+      });
+      hourSelect.value = new Date().getHours();
+      showQuote();
+    }
+
+    renderQuotes();
   </script>
 </body>
 </html>
