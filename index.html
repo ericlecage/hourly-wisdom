@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>el’s Hourly Wisdom – Live Daily Quotes</title>
+  <title>el’s Hourly Wisdom – Daily AI Quotes</title>
   <style>
     body {
       font-family: 'Georgia', serif;
@@ -42,7 +42,7 @@
   </style>
 </head>
 <body>
-  <h1>el’s Hourly Wisdom – May 29, 2025</h1>
+  <h1>el’s Hourly Wisdom – <span id="dateTitle"></span></h1>
 
   <div class="intro">
     From the sanctuary of <em>Eternal Echo</em> — a voice that never fades,<br>
@@ -55,30 +55,32 @@
   <div id="quotes"></div>
 
   <script>
-    const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTjOTGpIhzbGSFsNoUgPGYDtO1cNSsCfw4s49vnQRhXY-WU39Za1o3eQmsr9eG0UeHlMiYBsj3-2Xe7/pub?output=csv";
+    // Set header date
+    const todayObj = new Date();
+    const formattedDate = todayObj.toISOString().split("T")[0];
+    document.getElementById("dateTitle").textContent = formattedDate;
 
-    fetch(sheetUrl)
-      .then(response => response.text())
-      .then(csv => {
-        const lines = csv.split("\\n").slice(1); // skip header
-        const quotesContainer = document.getElementById("quotes");
+    // Format for file name: YYYY_MM_DD
+    const fileDate = formattedDate.replace(/-/g, "_");
+    const url = `/data/quotes_${fileDate}.json`;
 
-        lines.forEach(line => {
-          const [date, hour, theme, ...quoteParts] = line.split(",");
-          if (date && date.trim() === "2025-05-29") {
-            const rawQuote = quoteParts.join(",").trim();
-            const cleanedQuote = rawQuote.replace(/^"+|"+$/g, "").replace(/""/g, '"');
-
-            const div = document.createElement("div");
-            div.className = "quote-block";
-            div.innerHTML = `<div class="hour">${hour} – <span class="theme">${theme}</span></div>"${cleanedQuote}"`;
-            quotesContainer.appendChild(div);
-          }
+    fetch(url)
+      .then(response => {
+        if (!response.ok) throw new Error("File not found");
+        return response.json();
+      })
+      .then(data => {
+        const container = document.getElementById("quotes");
+        data.forEach(entry => {
+          const div = document.createElement("div");
+          div.className = "quote-block";
+          div.innerHTML = `<div class="hour">${entry.hour} – <span class="theme">${entry.theme}</span></div>"${entry.quote}"`;
+          container.appendChild(div);
         });
       })
-      .catch(err => {
-        document.getElementById("quotes").innerHTML = "Failed to load quotes. Please try again later.";
-        console.error(err);
+      .catch(error => {
+        document.getElementById("quotes").innerHTML = "Quotes not found for today. Please try again later.";
+        console.error("Error loading quote file:", error);
       });
   </script>
 </body>
