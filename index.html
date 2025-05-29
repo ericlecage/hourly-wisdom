@@ -60,7 +60,7 @@
     fetch(sheetUrl)
       .then(response => response.text())
       .then(csv => {
-        const lines = csv.split("\n").slice(1); // skip header
+        const lines = csv.split("\\n").slice(1); // skip header
         const quotesContainer = document.getElementById("quotes");
 
         lines.forEach(line => {
