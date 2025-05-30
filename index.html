@@ -55,15 +55,17 @@
   <div id="quotes"></div>
 
   <script>
-    // Set header date
+    // Date handling
     const todayObj = new Date();
-    const formattedDate = todayObj.toISOString().split("T")[0];
-    document.getElementById("dateTitle").textContent = formattedDate;
-
-    // Format for file name: YYYY_MM_DD
-    const fileDate = formattedDate.replace(/-/g, "_");
+    const fileDate = todayObj.toISOString().split("T")[0].replace(/-/g, "_");
     const url = `/data/quotes_${fileDate}.json`;
 
+    // Human-readable date
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const displayDate = todayObj.toLocaleDateString('en-ZA', options);
+    document.getElementById("dateTitle").textContent = displayDate;
+
+    // Fetch quotes
     fetch(url)
       .then(response => {
         if (!response.ok) throw new Error("File not found");
