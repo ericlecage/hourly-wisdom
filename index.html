@@ -60,7 +60,7 @@
     const fileDate = todayObj.toISOString().split("T")[0].replace(/-/g, "_");
     const url = `/data/quotes_${fileDate}.json`;
 
-    // Human-readable date
+    // Human-readable date (e.g., 30 May 2025)
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const displayDate = todayObj.toLocaleDateString('en-ZA', options);
     document.getElementById("dateTitle").textContent = displayDate;
