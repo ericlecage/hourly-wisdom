@@ -54,36 +54,44 @@
 
   <div id="quotes"></div>
 
-  <script>
-    // Date handling
-    const todayObj = new Date();
-    const fileDate = todayObj.toISOString().split("T")[0].replace(/-/g, "_");
-    const url = `/data/quotes_${fileDate}.json`;
+ <script>
+  // Step 1: Get today's date for file naming
+  const todayObj = new Date();
+  const fileDate = todayObj.toISOString().split("T")[0].replace(/-/g, "_");
+  const url = `/data/quotes_${fileDate}.json`;
 
-    // Human-readable date (e.g., 30 May 2025)
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const displayDate = todayObj.toLocaleDateString('en-ZA', options);
-    document.getElementById("dateTitle").textContent = displayDate;
+  // Step 2: Format date to human-readable form (e.g., 31 May 2025)
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const displayDate = todayObj.toLocaleDateString('en-ZA', options);
+  document.getElementById("dateTitle").textContent = displayDate;
 
-    // Fetch quotes
-    fetch(url)
-      .then(response => {
-        if (!response.ok) throw new Error("File not found");
-        return response.json();
-      })
-      .then(data => {
-        const container = document.getElementById("quotes");
-        data.forEach(entry => {
-          const div = document.createElement("div");
-          div.className = "quote-block";
-          div.innerHTML = `<div class="hour">${entry.hour} – <span class="theme">${entry.theme}</span></div>"${entry.quote}"`;
-          container.appendChild(div);
-        });
-      })
-      .catch(error => {
-        document.getElementById("quotes").innerHTML = "Quotes not found for today. Please try again later.";
-        console.error("Error loading quote file:", error);
+  // Step 3: Load the JSON file and render quotes
+  fetch(url)
+    .then(response => {
+      if (!response.ok) throw new Error("File not found");
+      return response.json();
+    })
+    .then(data => {
+      const container = document.getElementById("quotes");
+      let hour = 0;
+
+      // Step 4: Convert object entries (theme -> quote) into HTML
+      Object.entries(data).forEach(([theme, quote]) => {
+        const hourStr = hour.toString().padStart(2, "0") + ":00";
+        const div = document.createElement("div");
+        div.className = "quote-block";
+        div.innerHTML = `
+          <div class="hour">${hourStr} – <span class="theme">${theme}</span></div>
+          <div class="quote-text">"${quote}"</div>
+        `;
+        container.appendChild(div);
+        hour++;
       });
-  </script>
+    })
+    .catch(error => {
+      document.getElementById("quotes").innerHTML = "Quotes not found for today. Please try again later.";
+      console.error("Error loading quote file:", error);
+    });
+</script>
 </body>
 </html>
