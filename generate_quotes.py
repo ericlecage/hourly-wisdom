@@ -1,39 +1,48 @@
 import json
 from datetime import datetime
-import openai  # Requires 'openai' Python package
 
-# Set your OpenAI API key
-openai.api_key = "your_openai_api_key_here"
-
-themes = [
-    "Silence", "Wonder", "Discipline", "Growth", "Healing", "Faith", "Simplicity", "Wisdom",
-    "Focus", "Gratitude", "Courage", "Balance", "Peace", "Joy", "Perseverance", "Compassion",
-    "Presence", "Clarity", "Purpose", "Stillness", "Vision", "Forgiveness", "Hope", "Renewal"
+themes_and_quotes = [
+    ("Silence", "Silence is not empty; it is full of answers."),
+    ("Wonder", "Let wonder be the lens through which you see the ordinary."),
+    ("Discipline", "Discipline is the bridge between your longing and becoming."),
+    ("Growth", "Growth often disguises itself in discomfort."),
+    ("Healing", "Some wounds teach, others remind — but all heal with time."),
+    ("Faith", "Faith isn’t the absence of doubt, but the courage to walk with it."),
+    ("Simplicity", "In simplicity, we return to what truly matters."),
+    ("Wisdom", "Wisdom is the echo of truth heard in quiet surrender."),
+    ("Focus", "The sun doesn’t burn until brought to a single point."),
+    ("Gratitude", "Gratitude rewrites even broken days into sacred text."),
+    ("Courage", "Courage doesn’t roar — it whispers, 'try again tomorrow.'"),
+    ("Balance", "Balance is not perfection; it’s the rhythm of realignment."),
+    ("Peace", "Peace is when your spirit exhales."),
+    ("Joy", "Joy is not in things; it is in the overflow of being."),
+    ("Perseverance", "Even the tide returns — so will you."),
+    ("Compassion", "Compassion is strength wrapped in softness."),
+    ("Presence", "The present moment is the only place life breathes."),
+    ("Clarity", "When the heart clears, the path does too."),
+    ("Purpose", "Purpose is a whisper louder than fear."),
+    ("Stillness", "Stillness is not inactivity — it’s alignment."),
+    ("Vision", "Vision sees not what is, but what can be."),
+    ("Forgiveness", "Forgiveness is the gift you give yourself first."),
+    ("Hope", "Hope is rebellion against despair."),
+    ("Renewal", "Renewal is not a return — it is a resurrection."),
 ]
 
-today = datetime.today().strftime("%Y_%m_%d")
+today = datetime.now().strftime("%Y_%m_%d")
 output_file = f"data/quotes_{today}.json"
 
-hourly_quotes = []
-
-for i, theme in enumerate(themes):
-    prompt = f"""You are an oracle of timeless wisdom. Write a single, short, poetic quote themed around '{theme}', meant to uplift someone at hour {i:02d}:00 of their day. No generic advice. Each quote must be unique, rich, and soul-stirring. Format it as a raw quote, no intro or author."""
-    
-    response = openai.ChatCompletion.create(
-        model="gpt-4",
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.9,
-        max_tokens=60
-    )
-
-    quote = response['choices'][0]['message']['content'].strip().replace('"', '')
-    hourly_quotes.append({
-        "hour": f"{i:02d}:00",
+# Assemble quotes
+quotes = []
+for i, (theme, quote) in enumerate(themes_and_quotes):
+    hour = f"{i:02d}:00"
+    quotes.append({
+        "hour": hour,
         "theme": theme,
         "quote": quote
     })
 
+# Write to JSON
 with open(output_file, "w", encoding="utf-8") as f:
-    json.dump(hourly_quotes, f, ensure_ascii=False, indent=2)
+    json.dump(quotes, f, ensure_ascii=False, indent=2)
 
-print(f"✅ Saved: {output_file}")
+print(f"✅ Saved 24 poetic quotes to {output_file}")

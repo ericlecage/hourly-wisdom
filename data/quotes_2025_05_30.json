@@ -1,122 +1,26 @@
-[
-  {
-    "hour": "00:00",
-    "theme": "Silence",
-    "quote": "Silence is not empty; it is full of answers."
-  },
-  {
-    "hour": "01:00",
-    "theme": "Wonder",
-    "quote": "Let wonder be the lens through which you see the ordinary."
-  },
-  {
-    "hour": "02:00",
-    "theme": "Discipline",
-    "quote": "Discipline is the bridge between your longing and becoming."
-  },
-  {
-    "hour": "03:00",
-    "theme": "Growth",
-    "quote": "Growth often disguises itself in discomfort."
-  },
-  {
-    "hour": "04:00",
-    "theme": "Healing",
-    "quote": "Some wounds teach, others remind — but all heal with time."
-  },
-  {
-    "hour": "05:00",
-    "theme": "Faith",
-    "quote": "Faith isn’t the absence of doubt, but the courage to walk with it."
-  },
-  {
-    "hour": "06:00",
-    "theme": "Simplicity",
-    "quote": "In simplicity, we return to what truly matters."
-  },
-  {
-    "hour": "07:00",
-    "theme": "Wisdom",
-    "quote": "Wisdom is the echo of truth heard in quiet surrender."
-  },
-  {
-    "hour": "08:00",
-    "theme": "Focus",
-    "quote": "The sun doesn’t burn until brought to a single point."
-  },
-  {
-    "hour": "09:00",
-    "theme": "Gratitude",
-    "quote": "Gratitude rewrites even broken days into sacred text."
-  },
-  {
-    "hour": "10:00",
-    "theme": "Courage",
-    "quote": "Courage doesn’t roar — it whispers, 'try again tomorrow.'"
-  },
-  {
-    "hour": "11:00",
-    "theme": "Balance",
-    "quote": "Balance is not perfection; it’s the rhythm of realignment."
-  },
-  {
-    "hour": "12:00",
-    "theme": "Peace",
-    "quote": "Peace is when your spirit exhales."
-  },
-  {
-    "hour": "13:00",
-    "theme": "Joy",
-    "quote": "Joy is not in things; it is in the overflow of being."
-  },
-  {
-    "hour": "14:00",
-    "theme": "Perseverance",
-    "quote": "Even the tide returns — so will you."
-  },
-  {
-    "hour": "15:00",
-    "theme": "Compassion",
-    "quote": "Compassion is strength wrapped in softness."
-  },
-  {
-    "hour": "16:00",
-    "theme": "Presence",
-    "quote": "The present moment is the only place life breathes."
-  },
-  {
-    "hour": "17:00",
-    "theme": "Clarity",
-    "quote": "When the heart clears, the path does too."
-  },
-  {
-    "hour": "18:00",
-    "theme": "Purpose",
-    "quote": "Purpose is a whisper louder than fear."
-  },
-  {
-    "hour": "19:00",
-    "theme": "Stillness",
-    "quote": "Stillness is not inactivity — it’s alignment."
-  },
-  {
-    "hour": "20:00",
-    "theme": "Vision",
-    "quote": "Vision sees not what is, but what can be."
-  },
-  {
-    "hour": "21:00",
-    "theme": "Forgiveness",
-    "quote": "Forgiveness is the gift you give yourself first."
-  },
-  {
-    "hour": "22:00",
-    "theme": "Hope",
-    "quote": "Hope is rebellion against despair."
-  },
-  {
-    "hour": "23:00",
-    "theme": "Renewal",
-    "quote": "Renewal is not a return — it is a resurrection."
-  }
-]
+{
+    "Silence": "In the heart of silence, the universe whispers her truths, crafting wisdom from the gentle breath of stillness and the hush of stars.",
+    "Wonder": "In the heart of wonder, an infinite sky unfolds; the eyes of the soul forever dance with the mysteries of the unseen.",
+    "Discipline": "In the quiet forge of discipline, the soul is tempered, a steady flame that shapes the formless into divine purpose, unyielding and true.",
+    "Growth": "In the tender cradle of shadows, the seed of change awakens, blossoming through silence into the eternal light of becoming.",
+    "Healing": "In the silence of wounds, truth whispers; the heart, like the moon, waxes whole beneath the tender light of time.",
+    "Faith": "Faith is the whisper of stars in the vast night, unseen yet guiding the heart through uncharted seas of the soul.",
+    "Simplicity": "In the gentle cradle of simplicity, life's truths unfold like petals, revealing the quiet symphony hidden beneath the clamor of the world.",
+    "Wisdom": "In the stillness of silent seas, wisdom dances like a whispering breeze, ancient as the stars, gentle as morning light.",
+    "Focus": "\"In the stillness of a single thought, the universe aligns; for within focused light, the soul finds its journey's compass.\"",
+    "Gratitude": "In the garden of the heart, gratitude blooms, turning each moment into a sacred offering, where abundance whispers in humble, eternal tones.",
+    "Courage": "In the shadow of fear's whisper, courage rises as a silent flame, illuminating paths unseen with the light of the soul's resolve.",
+    "Balance": "\"In the dance of shadows and light, balance is the quiet whisper where the heart finds rest and the soul takes flight.\"",
+    "Peace": "In the stillness of the heart's quiet grove, peace blooms as the eternal echo of the universe's whispered harmony.",
+    "Joy": "In the garden of the heart, joy blooms eternal; a divine symphony sung by the soul, echoing the dance of the stars.",
+    "Perseverance": "In the dance of time, steadfast hearts weave paths through shadows, for even stars are born in the embrace of deep, silent night.",
+    "Compassion": "In the gentle embrace of compassion, hearts find their echo in the silence, healing the world with whispers of ancient grace.",
+    "Presence": "In the silence of the present breath, time bows its head, and the heart whispers the eternal song of now.",
+    "Clarity": "In the still waters of the soul, clarity blossoms—like the first light of dawn dispelling night's shadow, revealing truth's gentle path.",
+    "Purpose": "In the silent dance of stars, your purpose is the whisper; a seed planted in the soul, blooming with the light of being.",
+    "Stillness": "In stillness, whispers of the soul awaken, revealing the silent symphony where the heart learns to dance with eternity.",
+    "Vision": "In the heart's stillness, the soul's eye sees beyond the veil of illusion, unveiling the timeless dance of truth and destiny.",
+    "Forgiveness": "In forgiveness, the soul finds its wings, lifting burdens from the heart and setting spirits free to dance in love's eternal light.",
+    "Hope": "Hope is the whisper of stars in the soul's night, a golden thread weaving dawn from the tapestry of twilight's breath.",
+    "Renewal": "\"In the silent embrace of the dawn, the soul sheds its shadows, blooming anew as the earth whispers life's eternal promise.\""
+}
