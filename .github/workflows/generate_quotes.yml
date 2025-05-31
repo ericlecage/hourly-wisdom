@@ -2,35 +2,74 @@ name: Auto Generate Quotes Daily
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # Every day at 00:00 UTC
-  workflow_dispatch:     # Allow manual trigger
+    - cron: "0 0 * * *"  # Runs every day at midnight UTC
+  workflow_dispatch:     # Allows manual trigger from GitHub UI
+
+env:
+  TODAY: ${{ github.event.schedule != '' && github.event.schedule || format('{0:yyyy-MM-dd}', github.event.repository.pushed_at) }}
 
 jobs:
   generate:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: |
           pip install openai python-dotenv
 
-      - name: Generate today's quotes
+      - name: Generate Quotes
         run: python generate_quotes_openai.py
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
-      - name: Commit and push new quotes
+      - name: Commit and Push Quotes
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
-          git add data/quotes_*.json
-          git commit -m "🔁 Auto-generated quotes for $(date +'%Y-%m-%d')" || echo "No changes to commit"
-          git push
+          git pull --rebase origin main
+          git add data/*.json
+          git commit -m "🔁 Auto-generated quotes for ${{ env.TODAY }}" || echo "No changes to commit"
+          git push origin mainname: Auto Generate Quotes Daily
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # Runs every day at midnight UTC
+  workflow_dispatch:     # Allows manual trigger from GitHub UI
+
+env:
+  TODAY: ${{ github.event.schedule != '' && github.event.schedule || format('{0:yyyy-MM-dd}', github.event.repository.pushed_at) }}
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          pip install openai python-dotenv
+
+      - name: Generate Quotes
+        run: python generate_quotes_openai.py
+
+      - name: Commit and Push Quotes
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git pull --rebase origin main
+          git add data/*.json
+          git commit -m "🔁 Auto-generated quotes for ${{ env.TODAY }}" || echo "No changes to commit"
+          git push origin main
