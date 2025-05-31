@@ -1,26 +1,122 @@
-{
-    "Silence": "In the heart of the quiet forest, wisdom whispers. Seek her song, listen to the echo of her sacred truth.",
-    "Wonder": "Gaze into the night's vast canvas, each star a testament to the universe's gifts, one's wonder being the key that unlocks their brilliance.",
-    "Discipline": "Just as the sun faithfully rises, so should our discipline. It is the quiet heartbeat of our dreams, the steadfast echo of their fulfillment.",
-    "Growth": "Like a tender seed breaking free from earth's womb, growth arrives nannied by gentle sunshine of effort and nurturing rain of patience.",
-    "Healing": "Healing is the subtle river, carving canyons through pain, freeing the captive moonlight within our weary hearts.",
-    "Faith": "On the darkest path, faith is but a single glowing ember, casting shadows aside in its humble, resolute flame.",
-    "Simplicity": "As the sky cradles the falling sun with ease, simplicity is our natural home, the warm womb of serenity.",
-    "Wisdom": "In the quiet corners of our hearts, wisdom dwells like the patient echo of a cave, waiting to illuminate the soul's hallways.",
-    "Focus": "Like the hawk circling its prey, relentless, unwavering - our focus shapes the world, bending destiny to the curve of our will.",
-    "Gratitude": "As roots drink from the earth, and branches dance with the wind; gratitude unites us with the symphony of life.",
-    "Courage": "When the tempest rages, courage is our compass needle, anchoring us in the swirling tableau of life's trials.",
-    "Balance": "Balance is a moonbeam on the scales of existence, the divine equilibrium in the waltz of cosmos and chaos.",
-    "Peace": "In the whisper of leaves and sigh of seasons, peace surrounds us, as subtle and profound as the sky's embrace.",
-    "Joy": "Joy is the sunlight, untiring, it dances on the surface of the river of life, radiating warmth to every creature it touches.",
-    "Perseverance": "As the mountain withstands the siege of seasons, endurance is our core, chiseled by the patient hammer of time.",
-    "Compassion": "Compassion is the raindrop on a parched leaf; the soft melody in the tearful heart of suffering, offering respite and rebirth.",
-    "Presence": "Our presence is the eye of the storm, the serene hummingbird's heart amidst life’s turbulent dance, painting quietude on the canvas of the now.",
-    "Clarity": "Clarity is the first light of dawn piercing through the fog of uncertainty, etching the path forward into the marble of our understanding.",
-    "Purpose": "Purpose is the compass star, a faithful lantern glowing in the heart, guiding us through the thicket of existence.",
-    "Stillness": "In the stillness of a pond, the moon is most lucid. So in the quietude of mind, the soul's reflection finds its purity.",
-    "Vision": "Vision is the lighthouse of the soul, its rays illuminating far horizons, turning dreams into constellations in the star-mapped fabric of our aspirations.",
-    "Forgiveness": "Forgiveness is the morning tide washing clean the sand roiled by yesterday's storms, allowing new dawns to write gentle melodies upon our hearts.",
-    "Hope": "Hope, a single seed in winter's iron ground, dreaming of the carefree dance of flowers under the warm laughter of spring.",
-    "Renewal": "Renewal is the phoenix's song, the echo of its rebirth in the morning haze - a symphony of ashes made ethereal once more under the healing balm of time."
-}
+[
+  {
+    "hour": "00:00",
+    "theme": "Silence",
+    "quote": "Silence is not empty; it is full of answers."
+  },
+  {
+    "hour": "01:00",
+    "theme": "Wonder",
+    "quote": "Let wonder be the lens through which you see the ordinary."
+  },
+  {
+    "hour": "02:00",
+    "theme": "Discipline",
+    "quote": "Discipline is the bridge between your longing and becoming."
+  },
+  {
+    "hour": "03:00",
+    "theme": "Growth",
+    "quote": "Growth often disguises itself in discomfort."
+  },
+  {
+    "hour": "04:00",
+    "theme": "Healing",
+    "quote": "Some wounds teach, others remind — but all heal with time."
+  },
+  {
+    "hour": "05:00",
+    "theme": "Faith",
+    "quote": "Faith isn’t the absence of doubt, but the courage to walk with it."
+  },
+  {
+    "hour": "06:00",
+    "theme": "Simplicity",
+    "quote": "In simplicity, we return to what truly matters."
+  },
+  {
+    "hour": "07:00",
+    "theme": "Wisdom",
+    "quote": "Wisdom is the echo of truth heard in quiet surrender."
+  },
+  {
+    "hour": "08:00",
+    "theme": "Focus",
+    "quote": "The sun doesn’t burn until brought to a single point."
+  },
+  {
+    "hour": "09:00",
+    "theme": "Gratitude",
+    "quote": "Gratitude rewrites even broken days into sacred text."
+  },
+  {
+    "hour": "10:00",
+    "theme": "Courage",
+    "quote": "Courage doesn’t roar — it whispers, 'try again tomorrow.'"
+  },
+  {
+    "hour": "11:00",
+    "theme": "Balance",
+    "quote": "Balance is not perfection; it’s the rhythm of realignment."
+  },
+  {
+    "hour": "12:00",
+    "theme": "Peace",
+    "quote": "Peace is when your spirit exhales."
+  },
+  {
+    "hour": "13:00",
+    "theme": "Joy",
+    "quote": "Joy is not in things; it is in the overflow of being."
+  },
+  {
+    "hour": "14:00",
+    "theme": "Perseverance",
+    "quote": "Even the tide returns — so will you."
+  },
+  {
+    "hour": "15:00",
+    "theme": "Compassion",
+    "quote": "Compassion is strength wrapped in softness."
+  },
+  {
+    "hour": "16:00",
+    "theme": "Presence",
+    "quote": "The present moment is the only place life breathes."
+  },
+  {
+    "hour": "17:00",
+    "theme": "Clarity",
+    "quote": "When the heart clears, the path does too."
+  },
+  {
+    "hour": "18:00",
+    "theme": "Purpose",
+    "quote": "Purpose is a whisper louder than fear."
+  },
+  {
+    "hour": "19:00",
+    "theme": "Stillness",
+    "quote": "Stillness is not inactivity — it’s alignment."
+  },
+  {
+    "hour": "20:00",
+    "theme": "Vision",
+    "quote": "Vision sees not what is, but what can be."
+  },
+  {
+    "hour": "21:00",
+    "theme": "Forgiveness",
+    "quote": "Forgiveness is the gift you give yourself first."
+  },
+  {
+    "hour": "22:00",
+    "theme": "Hope",
+    "quote": "Hope is rebellion against despair."
+  },
+  {
+    "hour": "23:00",
+    "theme": "Renewal",
+    "quote": "Renewal is not a return — it is a resurrection."
+  }
+]
