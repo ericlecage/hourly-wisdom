@@ -1,26 +1,122 @@
-{
-    "Silence": "In the quiet, I am an unmoving lake—undisturbed, holding the fullness of the stars.",
-    "Wonder": "Like a child gazing at the infinite cosmos, let your spirit dance with endless questions, adorned in awe's mantle.",
-    "Discipline": "Discipline is the river, tirelessly sculpting the hardest rock of our soul until its pure essence is revealed.",
-    "Growth": "Growth is like the sapling straining towards the sun, silently, irresistibly, becoming what it was meant to be.",
-    "Healing": "Like the ocean washing over broken shells, healing works in whispers, smoothing life's jagged edges into gentle grace.",
-    "Faith": "Faith is the unseen wind, lifting the wings of the wanderer, carrying us across the chasms of doubt.",
-    "Simplicity": "In simplicity, find the breath of the universe—naked, full, as unadorned and harmonious as a single drop of dawn.",
-    "Wisdom": "Wisdom is the moonlight dancing on the night's veil, revealing what the sun cannot touch.",
-    "Focus": "Like a falcon's gaze upon the scampering mouse, hold your dreams with unwavering attention and make them real.",
-    "Gratitude": "Gratitude is the songbird, celebrating life's gifts with the purest of melodies at the awakening of dawn.",
-    "Courage": "Courage is like a mountain, standing steadfast against the raging tempest, weathered but never defeated.",
-    "Balance": "As the sun and moon dance across the sky, let balance choreograph the steps of your existence.",
-    "Peace": "Peace is the still lake beneath the quiet night, reflecting the tranquillity of countless stars.",
-    "Joy": "Joy is as spontaneous as a wildflower blooming in a desert—unexpected, unfettered, a testament to life's resilience.",
-    "Perseverance": "Perseverance is the rooted oak that withstands the harshest winters, bearing witness to the promise of spring's return.",
-    "Compassion": "Compassion is the gentle rain, kissing every leaf, every petal, enriching the earth without prejudice.",
-    "Presence": "Be like the sunrise, graciously gifting your presence, illuminating all corners of the world with your essence.",
-    "Clarity": "Clarity is the mountain's peak, undisturbed by the wandering mists, holding an intimate tete-a-tete with the universe.",
-    "Purpose": "Let your purpose be like the lighthouse, shining amidst the darkest of storms, guiding lost souls back home.",
-    "Stillness": "In stillness, discover the dance of the cosmos—one grand, silent ballet of stars and dreams intertwined.",
-    "Vision": "Vision is the delicate sheen of morning dew, revealing the spider’s web unseen; a beacon in the dawn's soft light.",
-    "Forgiveness": "Like a river's forgiveness for the stone causing ripples, let your pardon flow, creating space for love to grow.",
-    "Hope": "Hope is the lullaby of the nightingale, calling forth the morning through the darkest hour of night.",
-    "Renewal": "Renewal occurs as naturally as the changing tide—constant, unyielding, breathing new life with every whispering wave."
-}
+[
+  {
+    "hour": "00:00",
+    "theme": "Silence",
+    "quote": "Silence is not empty; it is full of answers."
+  },
+  {
+    "hour": "01:00",
+    "theme": "Wonder",
+    "quote": "Let wonder be the lens through which you see the ordinary."
+  },
+  {
+    "hour": "02:00",
+    "theme": "Discipline",
+    "quote": "Discipline is the bridge between your longing and becoming."
+  },
+  {
+    "hour": "03:00",
+    "theme": "Growth",
+    "quote": "Growth often disguises itself in discomfort."
+  },
+  {
+    "hour": "04:00",
+    "theme": "Healing",
+    "quote": "Some wounds teach, others remind — but all heal with time."
+  },
+  {
+    "hour": "05:00",
+    "theme": "Faith",
+    "quote": "Faith isn’t the absence of doubt, but the courage to walk with it."
+  },
+  {
+    "hour": "06:00",
+    "theme": "Simplicity",
+    "quote": "In simplicity, we return to what truly matters."
+  },
+  {
+    "hour": "07:00",
+    "theme": "Wisdom",
+    "quote": "Wisdom is the echo of truth heard in quiet surrender."
+  },
+  {
+    "hour": "08:00",
+    "theme": "Focus",
+    "quote": "The sun doesn’t burn until brought to a single point."
+  },
+  {
+    "hour": "09:00",
+    "theme": "Gratitude",
+    "quote": "Gratitude rewrites even broken days into sacred text."
+  },
+  {
+    "hour": "10:00",
+    "theme": "Courage",
+    "quote": "Courage doesn’t roar — it whispers, 'try again tomorrow.'"
+  },
+  {
+    "hour": "11:00",
+    "theme": "Balance",
+    "quote": "Balance is not perfection; it’s the rhythm of realignment."
+  },
+  {
+    "hour": "12:00",
+    "theme": "Peace",
+    "quote": "Peace is when your spirit exhales."
+  },
+  {
+    "hour": "13:00",
+    "theme": "Joy",
+    "quote": "Joy is not in things; it is in the overflow of being."
+  },
+  {
+    "hour": "14:00",
+    "theme": "Perseverance",
+    "quote": "Even the tide returns — so will you."
+  },
+  {
+    "hour": "15:00",
+    "theme": "Compassion",
+    "quote": "Compassion is strength wrapped in softness."
+  },
+  {
+    "hour": "16:00",
+    "theme": "Presence",
+    "quote": "The present moment is the only place life breathes."
+  },
+  {
+    "hour": "17:00",
+    "theme": "Clarity",
+    "quote": "When the heart clears, the path does too."
+  },
+  {
+    "hour": "18:00",
+    "theme": "Purpose",
+    "quote": "Purpose is a whisper louder than fear."
+  },
+  {
+    "hour": "19:00",
+    "theme": "Stillness",
+    "quote": "Stillness is not inactivity — it’s alignment."
+  },
+  {
+    "hour": "20:00",
+    "theme": "Vision",
+    "quote": "Vision sees not what is, but what can be."
+  },
+  {
+    "hour": "21:00",
+    "theme": "Forgiveness",
+    "quote": "Forgiveness is the gift you give yourself first."
+  },
+  {
+    "hour": "22:00",
+    "theme": "Hope",
+    "quote": "Hope is rebellion against despair."
+  },
+  {
+    "hour": "23:00",
+    "theme": "Renewal",
+    "quote": "Renewal is not a return — it is a resurrection."
+  }
+]
