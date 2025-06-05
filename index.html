@@ -114,8 +114,16 @@
           return response.json();
         })
         .then(data => {
-          allQuotes = data;
-          renderQuotes(data);
+          // Normalize to array of objects with hour, theme, and quote
+          allQuotes = Object.entries(data).map(([theme, val], index) => {
+            const quote = Array.isArray(val) ? val[0] : val;
+            return {
+              hour: index.toString().padStart(2, "0") + ":00",
+              theme: theme,
+              quote: quote
+            };
+          });
+          renderQuotes(allQuotes);
         })
         .catch(error => {
           document.getElementById("quotes").innerHTML = "Quotes not found for this date.";
