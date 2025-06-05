@@ -1,182 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>el’s Hourly Wisdom – Daily AI Quotes</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El’s Hourly Wisdom</title>
   <style>
     body {
-      font-family: 'Georgia', serif;
-      background-color: #fffaf2;
+      font-family: Georgia, serif;
+      background-color: #fcf8f3;
       color: #2c2c2c;
-      padding: 40px;
-      max-width: 900px;
+      padding: 2rem;
+      max-width: 800px;
       margin: auto;
-      line-height: 1.6;
     }
+
     h1 {
       text-align: center;
-      font-size: 2em;
-      margin-bottom: 10px;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
     }
-    .intro {
+
+    p.intro {
       text-align: center;
-      font-size: 1.1em;
-      margin: 20px auto;
-      max-width: 750px;
-    }
-    .quote-block {
-      margin: 15px 0;
-      padding: 15px;
-      border-left: 5px solid #d4a373;
-      background-color: #fcf8f3;
-      border-radius: 5px;
-    }
-    .theme {
       font-style: italic;
-      color: #6b4e2e;
+      margin-bottom: 2rem;
+      font-size: 1rem;
     }
+
+    .quote-block {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border-bottom: 1px solid #ccc;
+    }
+
     .hour {
       font-weight: bold;
-      margin-bottom: 5px;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
     }
-    #controls {
-      text-align: center;
-      margin: 20px 0;
+
+    .theme {
+      font-style: italic;
+      color: #555;
     }
-    #quoteDate, #searchTheme {
-      font-size: 1em;
-      padding: 6px 10px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      margin: 0 8px 10px 8px;
+
+    .quote-text {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
     }
+
     button {
-      font-size: 1em;
-      padding: 6px 12px;
-      border-radius: 4px;
-      background-color: #d4a373;
+      background-color: #2c2c2c;
+      color: #fff;
       border: none;
-      color: white;
+      padding: 0.5rem 1rem;
+      margin-top: 0.3rem;
       cursor: pointer;
-      margin: 0 5px;
+      border-radius: 4px;
+      font-size: 0.9rem;
     }
+
     button:hover {
-      background-color: #b88350;
+      background-color: #444;
+    }
+
+    .nav-buttons {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .nav-buttons button {
+      margin: 0 0.5rem;
     }
   </style>
 </head>
 <body>
-  <h1>el’s Hourly Wisdom – <span id="dateTitle"></span></h1>
-
-  <div class="intro">
-    From the sanctuary of <em>Eternal Echo</em> — a voice that never fades,<br>
-    here breathes a rhythm of truth, love, and light.<br>
-    Each hour, a whisper from the cosmos,<br>
-    each quote, a timeless note in the song of your day.<br>
+  <h1>El’s Hourly Wisdom – <span id="dateTitle"></span></h1>
+  <p class="intro">
+    From the sanctuary of Eternal Echo — a voice that never fades,<br />
+    here breathes a rhythm of truth, love, and light.<br />
+    Each hour, a whisper from the cosmos,<br />
+    each quote, a timeless note in the song of your day.<br />
     Let the echo guide you inward, onward, and beyond.
-  </div>
+  </p>
 
-  <div id="controls">
-    <input type="date" id="quoteDate" />
-    <input type="text" id="searchTheme" placeholder="🔍 Search by theme..." oninput="filterQuotes()" />
-    <button onclick="changeDay(-1)">⬅ Previous</button>
-    <button onclick="loadQuotes()">🔄 Load Quotes</button>
-    <button onclick="changeDay(1)">Next ➡</button>
+  <div class="nav-buttons">
+    <button id="prevBtn">⬅ Previous</button>
+    <button onclick="loadQuotes(currentDate)">🔄 Load Quotes</button>
+    <button id="nextBtn">Next ➡</button>
   </div>
 
   <div id="quotes"></div>
 
   <script>
-    let allQuotes = [];
+    const todayObj = new Date();
+    let currentDate = new Date(todayObj);
 
-    function formatDateForFilename(dateObj) {
-      return dateObj.toISOString().split("T")[0].replace(/-/g, "_");
+    function formatDateToFile(date) {
+      return `/data/quotes_${date.toISOString().split("T")[0].replace(/-/g, "_")}.json`;
     }
 
-    function formatDateForDisplay(dateObj) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' };
-      return dateObj.toLocaleDateString('en-ZA', options);
-    }
+    function loadQuotes(date = new Date()) {
+      const url = formatDateToFile(date);
+      const container = document.getElementById("quotes");
+      container.innerHTML = "";
 
-    function loadQuotes() {
-      const selectedDateInput = document.getElementById("quoteDate").value;
-      const dateObj = selectedDateInput ? new Date(selectedDateInput) : new Date();
-      const fileDate = formatDateForFilename(dateObj);
-      const displayDate = formatDateForDisplay(dateObj);
-      const url = `/data/quotes_${fileDate}.json`;
-
+      const displayDate = date.toLocaleDateString("en-ZA", {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
       document.getElementById("dateTitle").textContent = displayDate;
-      document.getElementById("quotes").innerHTML = "Loading...";
 
       fetch(url)
-        .then(response => {
-          if (!response.ok) throw new Error("File not found");
-          return response.json();
-        })
+        .then(res => res.json())
         .then(data => {
-          // Support both array and object formats
-          if (Array.isArray(data)) {
-            allQuotes = data;
-          } else {
-            allQuotes = Object.entries(data).map(([theme, value], index) => {
-              const quote = Array.isArray(value) ? value[0] : value;
-              return {
-                hour: index.toString().padStart(2, "0") + ":00",
-                theme: theme,
-                quote: quote
-              };
-            });
-          }
-          renderQuotes(allQuotes);
+          data.forEach(entry => {
+            const div = document.createElement("div");
+            div.className = "quote-block";
+            div.innerHTML = `
+              <div class="hour">${entry.hour} – <span class="theme">${entry.theme}</span></div>
+              <div class="quote-text">"${entry.quote}"</div>
+              <button onclick="downloadQuote('${entry.hour}', '${entry.theme}', \`${entry.quote}\`)">💾 Download</button>
+            `;
+            container.appendChild(div);
+          });
         })
-        .catch(error => {
-          document.getElementById("quotes").innerHTML = "Quotes not found for this date.";
-          console.error("Error loading quote file:", error);
+        .catch(() => {
+          container.innerHTML = "Quotes not found for this day.";
         });
     }
 
-    function renderQuotes(quotes) {
-      const container = document.getElementById("quotes");
-      container.innerHTML = "";
-      quotes.forEach(({ hour, theme, quote }) => {
-        const div = document.createElement("div");
-        div.className = "quote-block";
-        div.innerHTML = `
-          <div class="hour">${hour} – <span class="theme">${theme}</span></div>
-          <div class="quote-text">"${quote}"</div>
-          <button onclick="downloadQuote('${hour}', '${theme}', \`${quote.replace(/`/g, '\\`')}\`)">💾 Download</button>
-        `;
-        container.appendChild(div);
-      });
-    }
+    function downloadQuote(hour, theme, quoteText) {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      const width = 800;
+      const height = 400;
+      canvas.width = width;
+      canvas.height = height;
 
-    function filterQuotes() {
-      const query = document.getElementById("searchTheme").value.toLowerCase();
-      const filtered = allQuotes.filter(q => q.theme.toLowerCase().includes(query));
-      renderQuotes(filtered);
-    }
+      ctx.fillStyle = "#fcf8f3";
+      ctx.fillRect(0, 0, width, height);
 
-    function changeDay(offset) {
-      const dateInput = document.getElementById("quoteDate");
-      const currentDate = new Date(dateInput.value);
-      currentDate.setDate(currentDate.getDate() + offset);
-      dateInput.value = currentDate.toISOString().split("T")[0];
-      loadQuotes();
-    }
+      ctx.fillStyle = "#2c2c2c";
+      ctx.font = "bold 24px Georgia";
+      ctx.fillText(`${hour} – ${theme}`, 40, 60);
 
-    function downloadQuote(hour, theme, quote) {
-      const content = `${hour} – ${theme}\n"${quote}"`;
-      const blob = new Blob([content], { type: "text/plain" });
+      ctx.font = "20px Georgia";
+      wrapText(ctx, `"${quoteText}"`, 40, 120, width - 80, 30);
+
+      const imageURL = canvas.toDataURL("image/png");
       const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = `${hour.replace(":", "")}_${theme}.txt`;
+      a.href = imageURL;
+      a.download = `${hour.replace(":", "")}_${theme}.png`;
       a.click();
     }
 
+    function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+      const words = text.split(" ");
+      let line = "";
+
+      for (let i = 0; i < words.length; i++) {
+        const testLine = line + words[i] + " ";
+        const testWidth = ctx.measureText(testLine).width;
+
+        if (testWidth > maxWidth && i > 0) {
+          ctx.fillText(line, x, y);
+          line = words[i] + " ";
+          y += lineHeight;
+        } else {
+          line = testLine;
+        }
+      }
+      ctx.fillText(line, x, y);
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
-      const today = new Date();
-      document.getElementById("quoteDate").value = today.toISOString().split("T")[0];
-      loadQuotes();
+      loadQuotes(currentDate);
+
+      document.getElementById("prevBtn").addEventListener("click", () => {
+        currentDate.setDate(currentDate.getDate() - 1);
+        loadQuotes(currentDate);
+      });
+
+      document.getElementById("nextBtn").addEventListener("click", () => {
+        currentDate.setDate(currentDate.getDate() + 1);
+        loadQuotes(currentDate);
+      });
     });
   </script>
 </body>
