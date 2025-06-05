@@ -114,6 +114,7 @@
           return response.json();
         })
         .then(data => {
+          // Support both array and object formats
           if (Array.isArray(data)) {
             allQuotes = data;
           } else {
@@ -143,7 +144,7 @@
         div.innerHTML = `
           <div class="hour">${hour} – <span class="theme">${theme}</span></div>
           <div class="quote-text">"${quote}"</div>
-          <button onclick="downloadQuote('${hour}', '${theme}', \`${quote}\`)">💾 Download</button>
+          <button onclick="downloadQuote('${hour}', '${theme}', \`${quote.replace(/`/g, '\\`')}\`)">💾 Download</button>
         `;
         container.appendChild(div);
       });
@@ -164,7 +165,7 @@
     }
 
     function downloadQuote(hour, theme, quote) {
-      const content = `${hour} – ${theme}\n\"${quote}\"`;
+      const content = `${hour} – ${theme}\n"${quote}"`;
       const blob = new Blob([content], { type: "text/plain" });
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
