@@ -114,15 +114,18 @@
           return response.json();
         })
         .then(data => {
-          // Normalize to array of objects with hour, theme, and quote
-          allQuotes = Object.entries(data).map(([theme, val], index) => {
-            const quote = Array.isArray(val) ? val[0] : val;
-            return {
-              hour: index.toString().padStart(2, "0") + ":00",
-              theme: theme,
-              quote: quote
-            };
-          });
+          if (Array.isArray(data)) {
+            allQuotes = data;
+          } else {
+            allQuotes = Object.entries(data).map(([theme, value], index) => {
+              const quote = Array.isArray(value) ? value[0] : value;
+              return {
+                hour: index.toString().padStart(2, "0") + ":00",
+                theme: theme,
+                quote: quote
+              };
+            });
+          }
           renderQuotes(allQuotes);
         })
         .catch(error => {
